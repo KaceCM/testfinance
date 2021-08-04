@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home - Your Wallet
+{% endblock %}
+
+{% block main %}
+        <!--<form action="\quote">-->
+        <!--<button class="btn btn-primary" type="submit">Search</button>-->
+        <!--</form>-->
+
+        <div class="section">
+
+        <h3>Hello {{nomdumec}}, here are your actions</h3>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tamere">Symbol</th>
+                    <th class="tamere">Company Name</th>
+                    <th class="tamere">Latest Price</th>
+                    <th class="tamere">Shares</th>
+                    <th class="tamere">Amount</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <th>{{row.symbol}}</th>
+                    <th>{{row.companyName}}</th>
+                    <th>{{row.price|usd}}</th>
+                    <th>{{row.nombre}}</th>
+                    <th style="color:green">{{row.totalprice|usd}}</th>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    {% for i in range(20)%}
+                    <th></th>
+                    {% endfor %}
+
+                    <th class="tamere2">Total amount :</th>
+                    <th class="tamere2">{{totalaction|usd}}</th>
+                    <th class="tamere2">Total cash left :</th>
+                    <th class="tamere2">{{cashleft|usd}}</th>
+                </tr>
+            </thead>
+        </table>
+
+
+    </div>
+{% endblock %}

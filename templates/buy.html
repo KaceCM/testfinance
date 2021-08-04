@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h3>Let's buy some stocks !</h3>
+    <hr>
+    <h5 class="tamere3">Ta moula mon reuf : {{argenttotal|usd}}</h5>
+    <form action="/buy" method="post">
+        <div class="form-group">
+            <input autofocus class="form-control" name="symbol" placeholder="Search for a Finance" type="text">
+            <input autofocus class="form-control" name="shares" placeholder="Choose for a number" type="number" step="any">
+        </div>
+        <hr>
+        <button class="btn btn-primary" type="submit">BUY</button>
+    </form>
+{% endblock %}

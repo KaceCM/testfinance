@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History - Your Wallet
+{% endblock %}
+
+{% block main %}
+        <!--<form action="\quote">-->
+        <!--<button class="btn btn-primary" type="submit">Search</button>-->
+        <!--</form>-->
+
+        <div class="section">
+
+        <h3>{{nomdumec}}, here is your history</h3>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tamere">Company Name</th>
+                    <th class="tamere">Shares</th>
+                    <th class="tamere">Amount</th>
+                    <th class="tamere">Action</th>
+                    <th class="tamere">At</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <th>{{row.action}}</th>
+                    <th>{{row.nombre}}</th>
+                    {% if (row.method == "BUY") %}
+                    <th style="color:red">-{{row.prix|usd}}</th>
+                    <th style="color:red">{{row.method}}</th>
+                    {% else %}
+                    <th style="color:green">+{{row.prix|usd}}</th>
+                    <th style="color:green">{{row.method}}</th>
+                    {% endif %}
+                    <th>{{row.time}}</th>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <form action="/history" method="post">
+                    <th><button type="submit">Total History</button></th>
+                    </form>
+                    {% for i in range(20)%}
+                    <th></th>
+                    {% endfor %}
+
+                    <th class="tamere2">Total amount :</th>
+
+                </tr>
+                <tr>
+                    {% for i in range(21)%}
+                    <th></th>
+                    {% endfor %}
+                    <th class="tamere3" style="color:green">Sold : {{totalactionsold|usd}}</th>
+                </tr>
+                <tr>
+                    {% for i in range(21)%}
+                    <th></th>
+                    {% endfor %}
+                    <th class="tamere3" style="color:red">Bought : {{totalactionbought|usd}}</th>
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+{% endblock %}

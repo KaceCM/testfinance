@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <h3>Let's sell some stocks !</h3>
+    <hr>
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <select name="symbol">
+                <option value="" disabled selected>Finance to sell</option>
+                {% for action in actiondumec %}
+                <option value="{{action}}">{{action}}</option>
+                {% endfor %}
+            </select>
+            <input autofocus class="form-control" name="shares" placeholder="Number of it" type="number" min="1">
+        </div>
+        <button class="btn btn-primary" type="submit">SELL</button>
+    </form>
+            <div class="section">
+
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tamere">Symboll</th>
+                    <th class="tamere">Company Name</th>
+                    <th class="tamere">Latest Price</th>
+                    <th class="tamere">Shares</th>
+                    <th class="tamere">Amount</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <th>{{row.symbol}}</th>
+                    <th>{{row.companyName}}</th>
+                    <th>{{row.price|usd}}</th>
+                    <th>{{row.nombre}}</th>
+                    <th style="color:green">{{row.totalprice|usd}}</th>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    {% for i in range(20)%}
+                    <th></th>
+                    {% endfor %}
+
+                    <th class="tamere2">Total amount :</th>
+                    <th class="tamere2">{{totalaction|usd}}</th>
+
+
+                </tr>
+            </thead>
+        </table>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h3>Search for a price</h3>
+    <hr>
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autofocus class="form-control" name="symbol" placeholder="Search (ex AAPL, TSLA, NFLX)" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <hr>
+{% endblock %}
